@@ -2,7 +2,6 @@ import Navbar from "./Navbar";
 import List from "./List";
 import Pagination from "./Pagination";
 import useHN from "./useHN";
-
 import "./styles.css";
 import "./resetter.css";
 
