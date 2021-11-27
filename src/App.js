@@ -1,25 +1,83 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./Navbar";
+import List from "./List";
+import Pagination from "./Pagination";
+import useHN from "./useHN";
 
-function App() {
+import "./styles.css";
+import "./resetter.css";
+
+export default function App() {
+  const {
+    isLoading,
+    inputVal,
+    search,
+    error,
+    infoList,
+    setSearchParams,
+    searchParams,
+    setInputVal,
+    maxPage,
+  } = useHN();
+
+  const handleKeyPress = (e) => {
+    if (e.keyCode === 13) search();
+  };
+
+  const getContent = () => {
+    if (isLoading) {
+      return <div className="loadingFlag">Loading..</div>;
+    }
+    if (error) {
+      return (
+        <div className="errorFlag">
+          <p>An Error occured.</p>
+          <button>Go back</button>
+        </div>
+      );
+    }
+
+    if (!infoList.length) {
+      return <div className="loadingFlag">No result matches the query</div>;
+    }
+
+    return (
+      <div className="list-body">
+        {infoList.map((item, index) => (
+          <List
+            key={index}
+            number={index + 1 + ". "}
+            title={item.title}
+            points={item.points}
+            author={item.author}
+            comments={item.num_comments}
+          />
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      {getContent()}
+      <div className="search-actions">
+        <p>Search:</p>
+        <input
+          onChange={(e) => setInputVal(e.target.value)}
+          value={inputVal}
+          onKeyUp={handleKeyPress}
+        />
+        <button disabled={inputVal.length < 3} onClick={search}>
+          Search
+        </button>
+      </div>
+      <Pagination
+        setSearchParams={setSearchParams}
+        searchParams={searchParams}
+        isLoading={isLoading}
+        setInputVal={setInputVal}
+        maxPage={maxPage}
+      />
     </div>
   );
 }
-
-export default App;

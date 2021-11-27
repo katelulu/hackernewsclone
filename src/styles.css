@@ -1,0 +1,85 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 1em 4em;
+}
+
+/*---------NAVBAR-------*/
+.navbar {
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  background-color: #ef6537;
+}
+
+.navbar-title {
+  font-weight: bold;
+}
+
+.navbar-left {
+  width: 80%;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  padding-right: 1%;
+}
+
+.navbar-border {
+  border-right: solid 1px black;
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  padding: 0.4em;
+}
+
+.logo {
+  color: white;
+  font-weight: bold;
+  border: solid 1px white;
+  margin: 2px;
+}
+/*---------LIST-------*/
+
+.list-body {
+  background-color: #f6f6ef;
+  text-align: left;
+  padding: 0.5em;
+  font-size: 15px;
+}
+
+.list-second-row {
+  font-size: 13px;
+  color: gray;
+}
+
+/*---------SEARCH-------*/
+.search-actions {
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.search-actions p {
+  color: dark-gray;
+}
+
+.loadingFlag {
+  margin: 2em;
+  font-weight: bold;
+}
+
+.Pagination {
+  margin-top: 20px;
+}
+
+.Pagination button {
+  margin-right: 10px;
+}
